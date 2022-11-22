@@ -3,7 +3,7 @@
     padding: 0;
 }
 .container {
-    max-width: 400px;
+    max-width: 500px;
     margin: auto;
     margin-top: 100px;
 }
@@ -15,7 +15,9 @@
     justify-content: space-between;
 }
 .list {
-    background-color: #ddd;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid #ddd;
     margin-bottom: 10px;
     padding: 10px;
 }

@@ -3,20 +3,23 @@ const apiEndPoint = "http://localhost:3000/user";
 const todoListUL = document.querySelector(".todo-list-wrap ul")
 const todoListWrap = document.querySelector(".todo-list-wrap")
 const input = document.querySelector(".single-box input")
-const submitBtn = document.querySelector(".submit-button")
+const submitBtn = document.querySelector(".form-wrap")
 
 // Disply Card UI
 const displyCard = function (data) {
     todoListUL.innerHTML = ""
     data.map(item => {
         const html = `
-            <li class="d-flex list" data-id="${item?.id}">
-                <span>${item?.id} - ${item?.text}</span> <span class="end"><button>Edit</button> <button class="delete-btn">Delete</button></span>
+            <li class="d-flex list align-items-center" data-id="${item?.id}">
+                <span>${item?.id} - ${item?.text}</span> 
+                <span class="end">
+                    <button class="btn btn-success" id="#update-modal" data-bs-toggle="modal" data-bs-target="#update-modal">Edit</button> 
+                    <button class="delete-btn btn btn-danger">Delete</button>
+                </span>
             </li>
         `
         todoListUL.insertAdjacentHTML("afterbegin", html)
     })
-    
 }
 
 // Get Display Post 
@@ -43,7 +46,8 @@ const getPost = async function(newPost) {
     getDisplyPost()
 }
 // Submit post
-submitBtn.addEventListener("click", async function(e){
+submitBtn.addEventListener("submit", async function(e){
+    e.preventDefault()
     if(input.value === "") return false
     const post = {
         text: input.value
@@ -71,3 +75,4 @@ todoListWrap.addEventListener('click', async function(e){
         // e.target.closest(".list").remove()
     }
 })
+
